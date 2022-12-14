@@ -132,14 +132,14 @@ class genetic_algorithm:
 
     def __new_generation(self) -> None:
         
-        new___population = []
+        new_population = []
         if self.__cython == True:
             f_loop = time.time_ns()
             self.__population = GA_func.new_gen(self.__population, self.__fitness)
             #print(f'For Loop iter time = {(time.time_ns() - f_loop) / 1e+9}')
         
         else:
-            f_loop = time.time_ns()
+            #f_loop = time.time_ns()
             for _ in range(0, len(self.__population)):
                     start = time.time_ns()
                     ideal_candidate_a = gaf.roulette_wheel_selection(self.__population, self.__fitness)
@@ -149,12 +149,12 @@ class genetic_algorithm:
                     self.__crossover_times.append((time.time_ns() - start) / 1e+9)
                     mutated_order = gaf.mutate(child, 0.05)
                     self.__mutate_times.append((time.time_ns() - start) / 1e+9)
-                    new___population.append(mutated_order)
+                    new_population.append(mutated_order)
         
             #print(f'For Loop iter time = {(time.time_ns() - f_loop) / 1e+9}')
 
             self.__population.clear()
-            self.__population = new___population
+            self.__population = new_population
             #print("Generation {} DONE".format(next(self.__gen_number)))
             stop = time.time_ns()
             self.__new_gen_times.append((stop - f_loop) / 1e+9)

@@ -25,13 +25,19 @@ def main():
     end = time.time()
     print("GA Execution time: {0}ms".format(round(1000* (end - start), 3)))
     print("Best Distance: {0}".format(ga.best_distances[-1]))
+    
     #Save results to the Results/ Folder with the filename containing
     #the number of generations and population size.
     ga.save_result()
-
+   
     #Shows an animation of final result
     ani = FuncAnimation(ga.fig, func=ga.draw, interval = 500)
     plt.show()
+
+
+
+
+
 
     """
     USE VISUALISATION.PY TO VIEW RESULTS AFTER GA RUNTIME
