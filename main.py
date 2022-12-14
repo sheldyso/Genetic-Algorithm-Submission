@@ -34,11 +34,6 @@ def main():
     ani = FuncAnimation(ga.fig, func=ga.draw, interval = 500)
     plt.show()
 
-
-
-
-
-
     """
     USE VISUALISATION.PY TO VIEW RESULTS AFTER GA RUNTIME
 
